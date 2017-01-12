@@ -10,7 +10,7 @@ module.exports = React.createClass({
           usuario: localStorage.email
         }
         API.crearProblema(añadir)
-        EventBus.eventEmitter.emitEvent('crearProblema', [añadir])
+        EventBus.eventEmitter.emitEvent('refrescar', [añadir])
     },
     clickCloseProblema: function () {
       document.getElementById("newProblemComponente").className="hide";

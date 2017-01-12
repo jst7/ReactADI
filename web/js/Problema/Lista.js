@@ -53,6 +53,8 @@ module.exports = React.createClass({
           var eliminado = {
            id: this.state.items[0][0][i].id
           }
+          document.getElementById("MensajeApp").className="alert alert-danger"
+          document.getElementById("MensajeApp").innerHTML="elemento eliminado"
           EventBus.eventEmitter.emitEvent('refrescar', [eliminado])
     },
     editarItem: function (i) {
@@ -62,6 +64,8 @@ module.exports = React.createClass({
           descripcion: document.getElementById("editableDescripcion").value
         }
         API.editarProblema(editado)
+        document.getElementById("MensajeApp").className="alert alert-warning"
+        document.getElementById("MensajeApp").innerHTML="elemento editado"
         EventBus.eventEmitter.emitEvent('refrescar', [editado])
     },    
     clickPaginacion: function () {
