@@ -27,7 +27,11 @@ module.exports = React.createClass({
     paginas: function (nuevo) {
       API.obtenerItemsProblemasPaginado(nuevo)
           .then(datos => {
+            if(datos!=false)
               this.setState({items: datos})
+            else{
+              this.numPagina.value = parseInt(this.numPagina.value) -1
+            }
             })
     },
     refrescarItems: function () {
@@ -54,8 +58,8 @@ module.exports = React.createClass({
            id: this.state.items[0][0][i].id
           }
           document.getElementById("MensajeApp").className="alert alert-danger"
-          document.getElementById("MensajeApp").innerHTML="elemento eliminado"
-          EventBus.eventEmitter.emitEvent('refrescar', [eliminado])
+          document.getElementById("MensajeAppTexto").innerHTML="elemento eliminado"
+          this.clickPaginacion(); 
     },
     editarItem: function (i) {
         var editado = {
@@ -65,8 +69,8 @@ module.exports = React.createClass({
         }
         API.editarProblema(editado)
         document.getElementById("MensajeApp").className="alert alert-warning"
-        document.getElementById("MensajeApp").innerHTML="elemento editado"
-        EventBus.eventEmitter.emitEvent('refrescar', [editado])
+        document.getElementById("MensajeAppTexto").innerHTML="elemento editado"
+        this.clickPaginacion();
     },    
     clickPaginacion: function () {
       var pagina = {
@@ -74,7 +78,7 @@ module.exports = React.createClass({
           cant: this.cantidadPagina.value
         }
 
-        API.cambiarPaginas(pagina)
+        //API.cambiarPaginas(pagina)
         EventBus.eventEmitter.emitEvent('cambiarPag', [pagina])
     },    
     clickSiguiente: function () {

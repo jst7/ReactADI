@@ -10,7 +10,8 @@ module.exports = React.createClass({
        }
        API.login(entra).then(function(datos){
            EventBus.eventEmitter.emitEvent('entra', [entra])
-           location.reload();
+           if(datos!=false)
+            location.reload();
        })
     },
     render: function () {

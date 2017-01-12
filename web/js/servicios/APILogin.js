@@ -14,6 +14,10 @@ module.exports  = {
                       localStorage.setItem("contraseña",item.contraseña);
                       localStorage.setItem("autenticador", 'Basic ' + new Buffer("usuario:123456").toString('base64'));
                       return respuesta.json()
+                  }else{
+                    document.getElementById("MensajeApp").className="alert alert-warning"
+                    document.getElementById("MensajeApp").innerHTML="Login Incorrecto"
+                    return false
                   }
                })
     }

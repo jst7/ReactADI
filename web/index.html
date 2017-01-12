@@ -19,7 +19,7 @@
 	</nav>
 
 	<div class="col-xs-12">
-	<div class="alert alert-danger hide" id="MensajeApp"> </div>
+	<div class="alert alert-danger hide" id="MensajeApp"><div class="col-xs-3"> <div id="MensajeAppTexto"></div></div><a id="botonCerrar" class="btn btn-success"> Cerrar</a> </div>
 	   <div id = "loginUsuario" ></div>
 	   <div class="col-xs-3">
 	   		<div id="componenteListaUsuarios"></div>
@@ -38,6 +38,16 @@
 	   <div id="componenteNuevoItem"></div>
 	   <script src="js/bundle.js"></script>
   </div>
+
+  	<script type="text/javascript">
+
+	document.getElementById('botonCerrar').addEventListener('click', function(){
+				document.getElementById('MensajeApp').className="hide"
+				
+	})
+
+	</script>
+
 </body>
 <footer>
 

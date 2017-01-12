@@ -77,6 +77,7 @@ insert into Usuario (nombre,contraseña,email) values ('eloy','123456','jorgo@jo
 insert into Usuario (nombre,contraseña,email) values ('hector','123456','jorgu@jorge.com');
 insert into Usuario (nombre,contraseña,email) values ('Sonia','123456','jorgel@jorge.com');
 insert into Usuario (nombre,contraseña,email) values ('Carlos','123456','jorgex@jorge.com');
+insert into Usuario (nombre,contraseña,email) values ('Usuario','123456','Usuario');
 
 insert into Problema (usuario,titulo,descripcion) values ('jorge','hola','hola como eres');
 insert into Problema (usuario,titulo,descripcion) values ('judit','sola','hola como eres');

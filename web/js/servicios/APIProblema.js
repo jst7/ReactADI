@@ -40,7 +40,7 @@ module.exports  = {
                     return response.json()
             })
     },
-    cambiarPaginas: function(pagina){
+    /*cambiarPaginas: function(pagina){
       var newURL = 'http://localhost:3000/problemas?pagina=' + pagina.num  + '&&cantidad='+ pagina.cant
         return fetch(newURL,{
           method: 'GET',
@@ -48,10 +48,16 @@ module.exports  = {
             'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
-                if (response.ok)
-                    return response.json()
+                if (response.ok){
+                  return response.json()
+                }else{
+                  document.getElementById("MensajeApp").className="alert alert-warning"
+                  document.getElementById("MensajeAppTexto").innerHTML="Pagina o cantidad de elementos no accesible"
+                  return false
+                }
+                    
             })
-    },obtenerItemsProblemasPaginado: function (pagina) {
+    },*/obtenerItemsProblemasPaginado: function (pagina) {
         var newURL = 'http://localhost:3000/problemas?pagina=' + pagina.num  + '&&cantidad='+  pagina.cant
         return fetch(newURL,{
           method: 'GET',
@@ -59,8 +65,13 @@ module.exports  = {
             'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
-                if (response.ok)
-                    return response.json()
+                if (response.ok){
+                  return response.json()
+                }
+                else{
+                  return false
+                }
+                    
             })
     },
     crearProblema: function (item) {
