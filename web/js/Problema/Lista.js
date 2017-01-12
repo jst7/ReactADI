@@ -10,9 +10,7 @@ module.exports = React.createClass({
     componentDidMount: function () {
         //escuchamos el evento 'nuevoItem' en el bus de eventos
         //si se recibe el evento hay que añadir el item a la lista
-        EventBus.eventEmitter.addListener('crearProblema', this.addItem)
-        EventBus.eventEmitter.addListener('eliminarItem', this.deleteItem)
-        EventBus.eventEmitter.addListener('editarPro', this.editItem)
+        EventBus.eventEmitter.addListener('refrescar', this.refrescar)
         EventBus.eventEmitter.addListener('cambiarPag', this.paginas)
 
         this.numPagina.value = 1;
@@ -23,15 +21,10 @@ module.exports = React.createClass({
     getInitialState : function () {
       return {items:[]}
     },
-    addItem: function (nuevo) {
+    refrescar: function (nuevo) {
       this.refrescarItems();
     },
-    deleteItem: function (nuevo) {
-      this.refrescarItems();
-    },
-    editItem: function (nuevo) {
-      this.refrescarItems();
-    },paginas: function (nuevo) {
+    paginas: function (nuevo) {
       API.obtenerItemsProblemasPaginado(nuevo)
           .then(datos => {
               this.setState({items: datos})
@@ -60,7 +53,7 @@ module.exports = React.createClass({
           var eliminado = {
            id: this.state.items[0][0][i].id
           }
-          EventBus.eventEmitter.emitEvent('eliminarItem', [eliminado])
+          EventBus.eventEmitter.emitEvent('refrescar', [eliminado])
     },
     editarItem: function (i) {
         var editado = {
@@ -69,7 +62,7 @@ module.exports = React.createClass({
           descripcion: document.getElementById("editableDescripcion").value
         }
         API.editarProblema(editado)
-        EventBus.eventEmitter.emitEvent('editarPro', [editado])
+        EventBus.eventEmitter.emitEvent('refrescar', [editado])
     },    
     clickPaginacion: function () {
       var pagina = {

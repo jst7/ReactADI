@@ -1,6 +1,6 @@
 
 module.exports  = {
-    API_URL : 'http://localhost:3000/problemas?pagina=1&&cantidad=6',
+    API_URL : 'http://localhost:3000/problemas?pagina=1&&cantidad=5',
 
     obtenerItemsProblemas: function () {
         return fetch(this.API_URL,{
