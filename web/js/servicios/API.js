@@ -1,7 +1,13 @@
-
 module.exports  = {
     API_URL : 'http://localhost:3000/api/items',
-    login: function (item) {
+    obtenerItems: function () {
+        return fetch(this.API_URL)
+            .then(function(response) {
+                if (response.ok)
+                    return response.json()
+            })
+    },
+    addItem: function (item) {
         return fetch(this.API_URL, {
                    method: 'POST',
                    headers: {
@@ -12,6 +18,13 @@ module.exports  = {
                    if (respuesta.ok)
                       return respuesta.json()
                })
+    },
+    getItem: function(id) {
+       return fetch(this.API_URL+'/'+id)
+            .then(function(response) {
+                if (response.ok)
+                    return response.json()
+            })
     }
 
 }

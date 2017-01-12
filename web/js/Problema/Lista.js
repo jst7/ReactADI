@@ -81,7 +81,7 @@ module.exports = React.createClass({
         EventBus.eventEmitter.emitEvent('cambiarPag', [pagina])
     },    
     clickSiguiente: function () {
-      if(this.ultimaPagina.value == this.numPagina.value){
+      if(0 == this.numPagina.value){
 
       }else{
         this.numPagina.value = parseInt(this.numPagina.value) + 1
@@ -149,24 +149,35 @@ module.exports = React.createClass({
                   <div id="newProblem"><a  className="btn btn-default" onClick={this.clickNuevoProblema}> Añadir Problema</a></div>
                   <div id="zonaDeCambio">
                   <div className="list-group">
-                  {prods}
+                    {prods}
                   </div>
                   <div>
+                    <div className="col-xs-12">
+                      <div className="col-xs-4">
+                        <fieldset disabled>
+                          <input size="2" id="numeroPagina" placeholder="pagina" ref={(campo)=>{this.numPagina=campo}}></input>
+                        </fieldset>
+                      </div>
+                      <div className="col-xs-8">
+                        Por página: 
+                        <input size="2" id="cantidadPagina" placeholder="Cantidad" ref={(campo)=>{this.cantidadPagina=campo}}></input>
+                        <a className="btn btn-danger" onClick={this.clickPaginacion}>Ir</a>
+                      </div>
+                    </div>
+                  </div>
                   <div className="col-xs-12">
-                  <div className="col-xs-4">
-                  <fieldset disabled>
-                  <input size="2" id="numeroPagina" placeholder="pagina" ref={(campo)=>{this.numPagina=campo}}></input>
-                  </fieldset>
-                  </div>
-                  <div className="col-xs-8">
-                  <input size="2" id="cantidadPagina" placeholder="Cantidad" ref={(campo)=>{this.cantidadPagina=campo}}></input>
-                  <a className="btn btn-danger" onClick={this.clickPaginacion}>Ir</a>
-                  </div>
-                  </div>
-                  </div>
-                  <div>
-                  Anterior: {anterior}  Siguiente: {siguiente} Ultima: 
-                  <input size="2" type="text" value={ultima} ref={(campo)=>{this.ultimaPagina=campo}}></input>
+                    <div className="col-xs-4">
+                      Anterior: {anterior} 
+                    </div>
+                   <div className="col-xs-4">
+                      Siguiente: {siguiente} 
+                    </div>
+                    <div className="col-xs-2">
+                      Ultima:
+                    </div>
+                   <div className="col-xs-2">
+                      <p id="ultimaPagina"> {ultima}  </p>
+                    </div>                     
                   </div>
                   </div>
                   <a className="btn btn-warning" onClick={this.clickAnterior} >Anterior</a>

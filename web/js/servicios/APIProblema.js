@@ -1,12 +1,12 @@
 
 module.exports  = {
-    API_URL : 'http://localhost:3000/problemas?pagina=1',
+    API_URL : 'http://localhost:3000/problemas?pagina=1&&cantidad=6',
 
     obtenerItemsProblemas: function () {
         return fetch(this.API_URL,{
           method: 'GET',
           headers: {
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
                 if (response.ok)
@@ -18,7 +18,7 @@ module.exports  = {
       return fetch(URL,{
           method: 'DELETE',
           headers: {
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
                 if (response.ok)
@@ -32,7 +32,7 @@ module.exports  = {
           method: 'PUT',
           headers: {
             'Content-type':'application/json',
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           },
           body: JSON.stringify(item)
         }).then(function(response) {
@@ -45,7 +45,7 @@ module.exports  = {
         return fetch(newURL,{
           method: 'GET',
           headers: {
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
                 if (response.ok)
@@ -56,7 +56,7 @@ module.exports  = {
         return fetch(newURL,{
           method: 'GET',
           headers: {
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
                 if (response.ok)
@@ -69,7 +69,7 @@ module.exports  = {
                    method: 'POST',
                    headers: {
                        'Content-type':'application/json',
-                       'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+                       'Authorization': localStorage.autenticador
                    },
                    body: JSON.stringify(item)
                }).then(function (respuesta) {

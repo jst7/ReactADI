@@ -6,26 +6,11 @@ module.exports  = {
         return fetch(this.API_URL,{
           method: 'GET',
           headers: {
-            'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
+            'Authorization': localStorage.autenticador
           }
         }).then(function(response) {
                 if (response.ok)
                     return response.json()
             })
-    },
-
-    addItem: function (item) {
-        return fetch(this.API_URL, {
-                   method: 'POST',
-                   headers: {
-                       'Content-type':'application/json',
-                       'Authorization': 'Basic ' + new Buffer("usuario:123456").toString('base64')
-                   },
-                   body: JSON.stringify(item)
-               }).then(function (respuesta) {
-                   if (respuesta.ok)
-                      return respuesta.json()
-               })
     }
-
 }

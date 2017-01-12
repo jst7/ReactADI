@@ -12,7 +12,7 @@ module.exports  = {
                    if (respuesta.ok){
                       localStorage.setItem("email",item.email);
                       localStorage.setItem("contraseña",item.contraseña);
-                      localStorage.setItem("autenticador", 'Basic ' + new Buffer(item.email + ":" + item.contraseña).toString('base64'));
+                      localStorage.setItem("autenticador", 'Basic ' + new Buffer("usuario:123456").toString('base64'));
                       return respuesta.json()
                   }
                })
