@@ -26,7 +26,6 @@ module.exports  = {
             })
     },
     editarProblema: function(item){
-      console.log(item);
       var URL = 'http://localhost:3000/problemas/' + item.id
       return fetch(URL,{
           method: 'PUT',

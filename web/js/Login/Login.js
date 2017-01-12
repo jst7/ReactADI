@@ -1,6 +1,8 @@
 var React = require('react')
+var ReactDOM = require('react-dom')
 var API = require('../servicios/APILogin')
 var EventBus = require('../servicios/EventBus')
+
 
 module.exports = React.createClass({
     click: function () {
@@ -10,8 +12,42 @@ module.exports = React.createClass({
        }
        API.login(entra).then(function(datos){
            EventBus.eventEmitter.emitEvent('entra', [entra])
-           if(datos!=false)
-            location.reload();
+           if(datos!=false){
+
+              document.getElementById("loginUsuario").innerHTML="";
+
+              //LOGOUT
+              var LogoutUSuario = require('../Login/Logout')
+              ReactDOM.render(<LogoutUSuario/>,
+                document.getElementById('logout'))
+              //USUARIO
+              var ListaUsuarios = require('../Usuarios/Lista')
+              ReactDOM.render(<ListaUsuarios/>,
+                  document.getElementById('componenteListaUsuarios'))
+              //PROBLEMA
+              var ListaProblemas = require('../Problema/Lista')
+              ReactDOM.render(<ListaProblemas/>,
+                  document.getElementById('componenteListaProblemas'))
+              
+              var CrearProbl= require('../Problema/CrearProblema')
+              ReactDOM.render(<CrearProbl/>,
+                  document.getElementById('componenteCrearProblema'))
+
+              //PREGUNTA
+              document.addEventListener('DOMContentLoaded', function(){
+              APILista.obtenerItemsPregunta().then(function(datos) {
+                var listaHTML = tmpl_lista_compilada(datos[0][0])
+                document.getElementById("miComponente").innerHTML = listaHTML
+              })
+              })
+
+              //SOLUCION
+              var ListaSolucion = require('../Solucion/Lista')
+              ReactDOM.render(<ListaSolucion/>,
+                  document.getElementById('componenteListaSolucion'))
+
+
+            }
        })
     },
     render: function () {
