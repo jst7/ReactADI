@@ -1,3 +1,15 @@
+#Breve explicación de la práctica
+
+Tenemos un Login donde nos logeamos con usuario y contraseña en este caso he habilitado el usuario: `Usuario` y contraseña: `123456` pero valdria cualquier email y contraseña de la bd.
+
+Al entrar nos encontramos con 4 listas.
+USUARIOS (REACT solo ver detalles)
+PROBLEMA (REACT con editar, detalles y eliminar y paginación)
+PREGUNTA (HANDLEBARS NATIVA con editar, detalles y eliminar)
+SOLUCION (REACT solo ver detalles)
+
+La aplicación tiene mensaje para el usuario y hace uso de CSS bootstrap
+
 # react y handlebars
 
 API REST + REACT + HANDLEBARS (NATIVO)

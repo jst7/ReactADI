@@ -45,7 +45,7 @@ module.exports = React.createClass({
             }
         }
         return <div id="lista">
-                  <h1>Usuarioss</h1>
+                  <h1>Usuarios</h1>
                   <div className="list-group">
                   {prods}
                   </div>

@@ -154,19 +154,21 @@ module.exports = function() {
 
   this.paginas_paginacion=function(esqueleto, req, ultima){
   	var posicion = req.query.pagina
-  	var itemPag = req.query. cantidad
+  	var itemPage = req.query.cantidad
   	
   	var antes = posicion;
   	if(antes>1){
   		antes=antes-1;
   	}
 
-  	var last= ultima/itemPag;
+  	var last= ultima/itemPage;
+  	if(ultima%itemPage!=0){
+  		if(last < 1.5)
+  			last=parseInt(last.toFixed())+1;
+  		else
+  			last=parseInt(last.toFixed());
 
-  	if(ultima%itemPag!=0){
-  		last=parseInt(last.toFixed())+1;
-
-  	}else if(ultima<itemPag){
+  	}else if(ultima<itemPage){
   		last=1
   	}
 
