@@ -10,6 +10,8 @@ module.exports = React.createClass({
           usuario: localStorage.email
         }
         API.crearProblema(añadir)
+        document.getElementById("MensajeApp").className="alert alert-warning"
+        document.getElementById("MensajeAppTexto").innerHTML="elemento Creado"
         EventBus.eventEmitter.emitEvent('refrescar', [añadir])
     },
     clickCloseProblema: function () {

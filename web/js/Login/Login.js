@@ -1,8 +1,9 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 var API = require('../servicios/APILogin')
+var APILista = require('../servicios/APIPregunta.js')
 var EventBus = require('../servicios/EventBus')
-
+var handlebars = require('handlebars')
 
 module.exports = React.createClass({
     click: function () {
@@ -11,10 +12,35 @@ module.exports = React.createClass({
            contraseña: this.campoContraseña.value
        }
        API.login(entra).then(function(datos){
-           EventBus.eventEmitter.emitEvent('entra', [entra])
+
+        var templateItem = `
+                           <div>
+                              <div class="list-group-item" id="{{id}}">
+                                <div class="col-xs-3">
+                                 {{Problema}} 
+                                </div>
+                              <a class="btn btn-danger" id="Delenlace_{{id}}" href="javascript:delPregunta({{id}})">Eliminar</a>
+                              <a class="btn btn-warning" id="Editenlace_{{id}}" href="javascript:verEditable({{id}})">Editar</a>
+                              <a class="btn btn-primary" id="venlace_{{id}}" href="javascript:verDetalles({{id}})">Detalles</a>
+                              </div>   
+                           </div>
+                        `
+          var templateLista = `
+                             <h1>Preguntas</h1>
+                             <a class="btn btn-default"> Añadir Pregunta </a> 
+                             <div id="listaPreguntaCon">
+                             {{#.}}
+                               ${templateItem}
+                             {{/.}}
+                             </div>
+                            `
+
+          var tmpl_lista_compilada = handlebars.compile(templateLista)
+
+
            if(datos!=false){
 
-              document.getElementById("loginUsuario").innerHTML="";
+              document.getElementById("loginUsuario").className="hide";
 
               //LOGOUT
               var LogoutUSuario = require('../Login/Logout')
@@ -33,12 +59,9 @@ module.exports = React.createClass({
               ReactDOM.render(<CrearProbl/>,
                   document.getElementById('componenteCrearProblema'))
 
-              //PREGUNTA
-              document.addEventListener('DOMContentLoaded', function(){
               APILista.obtenerItemsPregunta().then(function(datos) {
                 var listaHTML = tmpl_lista_compilada(datos[0][0])
                 document.getElementById("miComponente").innerHTML = listaHTML
-              })
               })
 
               //SOLUCION

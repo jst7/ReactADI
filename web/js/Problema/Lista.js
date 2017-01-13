@@ -112,6 +112,19 @@ module.exports = React.createClass({
             var siguiente = this.state.items[0][1][0].siguiente;
             var ultima = this.state.items[0][1][0].última;
 
+            if(ultima==this.numPagina.value ){
+              document.getElementById("SiguientePagina").className="hide"
+            }
+            else{
+              document.getElementById("SiguientePagina").className="btn btn-primary"
+            }
+            if(anterior==this.numPagina.value){
+              document.getElementById("AnteriorPagina").className="hide"
+            }
+            else{
+              document.getElementById("AnteriorPagina").className="btn btn-warning"
+            }
+
             for(var j=0; j<total.length; j++){
                 var ahora = total[j]
 
@@ -181,8 +194,8 @@ module.exports = React.createClass({
                     </div>                     
                   </div>
                   </div>
-                  <a className="btn btn-warning" onClick={this.clickAnterior} >Anterior</a>
-                  <a className="btn btn-primary" onClick={this.clickSiguiente} >Siguiente</a>
+                  <a className="btn btn-warning" id="AnteriorPagina" onClick={this.clickAnterior} >Anterior</a>
+                  <a className="btn btn-primary" id="SiguientePagina" onClick={this.clickSiguiente} >Siguiente</a>
                </div>
     }
 })

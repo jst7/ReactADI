@@ -50,6 +50,13 @@ var tmpl_item_compilada = handlebars.compile(templateItem)
 var tmpl_detalles_compilada = handlebars.compile(templateDetalles)
 var tmpl_edita_compilada = handlebars.compile(templateEdita)
 
+function pregunta(){
+	APILista.obtenerItemsPregunta().then(function(datos) {
+    var listaHTML = tmpl_lista_compilada(datos[0][0])
+    document.getElementById("miComponente").innerHTML = listaHTML
+    })
+}
+
 function delPregunta(id) {
 	APILista.eliminarPregunta(id).then(function(item){
 			APILista.obtenerItemsPregunta().then(function(datos) {
@@ -159,9 +166,6 @@ if(localStorage.email != null && localStorage.contraseña != null && localStorag
 	    document.getElementById('componenteCrearProblema'))
 
 	//PREGUNTA
-	//var ListaPreguntas = require('./Pregunta/Lista')
-	//ReactDOM.render(<ListaPreguntas/>,
-	//    document.getElementById('componenteListaPreguntas'))
 	document.addEventListener('DOMContentLoaded', function(){
 	APILista.obtenerItemsPregunta().then(function(datos) {
 		var listaHTML = tmpl_lista_compilada(datos[0][0])
