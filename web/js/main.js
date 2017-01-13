@@ -18,7 +18,6 @@ var templateItem = `
 `
 var templateLista = `
  <h1>Preguntas</h1>
- <a class="btn btn-default"> Añadir Pregunta </a> 
  <div id="listaPreguntaCon">
  {{#.}}
    ${templateItem}

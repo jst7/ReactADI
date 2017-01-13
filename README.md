@@ -1,9 +1,10 @@
-# react-lista-compra
+# react y handlebars
 
-API REST de la lista de la compra con cliente React.
-
+API REST + REACT + HANDLEBARS (NATIVO)
 
 ## Instalar requerimientos
+
+Montar la BD de la carpeta `script bd` nombre y contraseña de la bd mysql en `aux.js`
 
 Instalar dependencias como es habitual con
 
@@ -17,14 +18,13 @@ Para poder construir el código en el cliente hace falta la herramienta en líne
 npm install watchify -g
 ```
 
-> Si has instalado node usando  NVM (Node Version Manager) no harán falta permisos de *root* para instalar con `-g`, pero si lo has instalado por otros métodos es bastante probable que tengas que ejecutar la orden anterior en modo superusuario.
  
 ## En el proceso de desarrollo
 
 Para ejecutar el servidor:
 
 ```bash
-node server.js
+nodemon
 ```
 
 Para poner en marcha el *build* del cliente, en una **nueva terminal** (sin cerrar el proceso del servidor):
