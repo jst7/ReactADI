@@ -4,6 +4,10 @@ var EventBus = require('../servicios/EventBus')
 
 module.exports = React.createClass({
     clickAddProblema: function () {
+      if(this.campoTitulpro.value=="" || this.campoDescripPro.value==""){
+        document.getElementById("MensajeApp").className="alert alert-danger"
+        document.getElementById("MensajeAppTexto").innerHTML="elemento no Creado, hay que completar los campos"
+      }else{
     	 var añadir = {
           titulo: this.campoTitulpro.value,
           descripcion: this.campoDescripPro.value,
@@ -13,6 +17,7 @@ module.exports = React.createClass({
         document.getElementById("MensajeApp").className="alert alert-warning"
         document.getElementById("MensajeAppTexto").innerHTML="elemento Creado"
         EventBus.eventEmitter.emitEvent('refrescar', [añadir])
+      }
     },
     clickCloseProblema: function () {
       document.getElementById("newProblemComponente").className="hide";

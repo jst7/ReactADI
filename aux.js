@@ -142,11 +142,11 @@ module.exports = function() {
   	var cantidad = pet.query.cantidad
 
   	if(pagina != undefined && pagina > 0 && cantidad != undefined && cantidad > 0){
-  		consulta = ' LIMIT ' + ((pagina*itemPorPagina) - itemPorPagina) + ', ' + cantidad
+  		consulta = ' LIMIT ' + ((pagina*cantidad) - cantidad) + ', ' + cantidad
   	}
 
   	else if(pagina != undefined && pagina > 0){
-  		consulta = ' LIMIT ' + ((pagina*itemPorPagina) - itemPorPagina) + ', ' + rows
+  		consulta = ' LIMIT ' + ((pagina*cantidad) - cantidad) + ', ' + rows
   	}
 
   	return consulta;
