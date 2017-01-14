@@ -73,13 +73,13 @@ module.exports = React.createClass({
        })
     },
     render: function () {
-        return <div>
-            <h1>Login</h1>
-            <input type="text" placeholder="Usuario" 
+        return <div className="container well col-xs-2 col-xs-push-1">
+            <h1 className="h1">Login</h1>
+            <input className="form-group" type="text" placeholder="Usuario" 
                 ref={(campo)=>{this.campoEmail=campo}}/> <br/>
-            <input type="password" placeholder="Contraseña"
+            <input className="form-group" type="password" placeholder="Contraseña"
                 ref={(campo)=>{this.campoContraseña=campo}}/> <br/>
-            <button onClick={this.click}>Entrar</button>
+            <button className="btn btn-primary" onClick={this.click}>Entrar</button>
         </div>
     }   
 })

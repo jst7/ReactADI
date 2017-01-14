@@ -4,11 +4,11 @@ Tenemos un Login donde nos logeamos con usuario y contraseña en este caso he ha
 
 Al entrar nos encontramos con 4 listas.
 USUARIOS (REACT solo ver detalles)
-PROBLEMA (REACT con editar, detalles y eliminar y paginación)
+PROBLEMA (REACT con añadir, editar, detalles y eliminar y paginación)
 PREGUNTA (HANDLEBARS NATIVA con editar, detalles y eliminar)
 SOLUCION (REACT solo ver detalles)
 
-La aplicación tiene mensaje para el usuario y hace uso de CSS bootstrap
+La aplicación tiene mensajes de informarción para el usuario y hace uso de CSS bootstrap
 
 # react y handlebars
 
